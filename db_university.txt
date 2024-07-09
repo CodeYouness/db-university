@@ -1,0 +1,6 @@
+1. SELECT *
+FROM `students`
+WHERE YEAR(`students`.`date_of_birth`) = 1990;
+2. SELECT *
+FROM `courses`
+WHERE `courses`.`cfu` > 10;
