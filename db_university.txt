@@ -17,3 +17,15 @@ AND `exams`.`hour` > '14:00:00';
 6. SELECT * 
 FROM `degrees` 
 WHERE `degrees`.`level`= 'magistrale';
+7.SELECT COUNT(*)
+FROM `departments`
+8.SELECT COUNT(*)
+FROM `teachers`
+WHERE `teachers`.`phone` 
+IS NULL
+9.INSERT INTO `students`(`id`, `degree_id`, `name`, `surname`, `date_of_birth`, `fiscal_code`, `enrolment_date`, `registration_number`, `email`) 
+VALUES (5001,8,'[youness]','[lijassi]','2000-03-08','[LSBD88S02H181O]','2020-03-08',281092,'[ZI.fiko@figo.it]');
+10.UPDATE `teachers` 
+SET `office_number`= 126 
+WHERE `teachers`.`name` = 'Pietro'
+AND `teachers`.`surname` = 'Rizzo'
