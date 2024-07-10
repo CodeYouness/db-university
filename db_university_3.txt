@@ -1,0 +1,7 @@
+1. SELECT YEAR(`students`.`enrolment_date`) AS 'enrolment_year', COUNT(`students`.`enrolment_date`) AS 'students_per_year'
+FROM `students`
+GROUP BY YEAR(`students`.`enrolment_date`)
+2. SELECT `teachers`.`office_address` AS 'ufficio', COUNT(`teachers`.`office_address`) AS 'teacher_per_building'
+FROM `teachers`
+GROUP BY ufficio
+3. 
