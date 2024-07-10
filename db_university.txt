@@ -29,3 +29,5 @@ VALUES (5001,8,'[youness]','[lijassi]','2000-03-08','[LSBD88S02H181O]','2020-03-
 SET `office_number`= 126 
 WHERE `teachers`.`name` = 'Pietro'
 AND `teachers`.`surname` = 'Rizzo'
+11. DELETE FROM `students` 
+WHERE `students`.`name`= '[youness]'
