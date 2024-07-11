@@ -1,7 +1,46 @@
+QUERY CON GROUP BY
 1. SELECT YEAR(`students`.`enrolment_date`) AS 'enrolment_year', COUNT(`students`.`enrolment_date`) AS 'students_per_year'
 FROM `students`
 GROUP BY YEAR(`students`.`enrolment_date`)
 2. SELECT `teachers`.`office_address` AS 'ufficio', COUNT(`teachers`.`office_address`) AS 'teacher_per_building'
 FROM `teachers`
 GROUP BY ufficio
-3. 
+3. SELECT AVG(`exam_student`.`vote`) as 'average_vote_per_exam', `exam_student`.`exam_id` AS 'exam'
+FROM `exam_student`
+GROUP BY `exam_student`.`vote`, exam
+4. SELECT `degrees`.`department_id`AS 'department_id', COUNT(`degrees`.`id`) AS 'number_of_exam'
+FROM `degrees`
+GROUP BY `degrees`.`department_id`
+
+QUERY CON JOIN
+1. SELECT *
+FROM `students`
+INNER JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = 'Corso di laurea in economia';
+2. SELECT `degrees`.*
+FROM `degrees`
+INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.`name` = 'dipartimento di neuroscienze'
+AND `degrees`.`level`='magistrale';
+3. SELECT `courses`.*
+FROM `courses`
+INNER JOIN `course_teacher` ON `courses`.`id`=`course_teacher`.`course_id`
+INNER JOIN `teachers`ON `course_teacher`.`course_id` = `teachers`.`id`
+WHERE `teachers`.`id`= 44
+4. SELECT `students`.*, `degrees`.`name`, `departments`.`name`
+FROM `students`
+INNER JOIN `degrees` ON `degrees`.`id`=`students`.`degree_id`
+INNER JOIN `departments`ON `departments`.`id` = `degrees`.`department_id`
+ORDER BY `students`.`surname`, `students`.`name` ASC
+5. SELECT `degrees`.`name`, `courses`.`name`, `teachers`.*
+FROM `degrees`
+INNER JOIN `courses` ON `degrees`.`id`=`courses`.`degree_id`
+INNER JOIN `course_teacher` ON `course_teacher`.`course_id` = `courses`.`id`
+INNER JOIN `teachers` ON `course_teacher`.`teacher_id`= `teachers`.`id`
+6. SELECT DISTINCT`teachers`.*
+FROM `teachers`
+INNER JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id`
+INNER JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id`
+INNER JOIN `degrees`ON `courses`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments` ON `degrees`.`department_id` = `departments`.`id`
+WHERE `departments`.`name` = 'dipartimento di matematica'
